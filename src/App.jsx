@@ -29,7 +29,7 @@ function App() {
           <Route path='olvide-password/:token' element={<NuevoPassword />} />
           <Route path='confirmar/:id' element={<ConfirmarCuenta />} />
         </Route>
-        <Route path='/#/admin' element={<RutaProtegida />}>
+        <Route path='/#/admin/' element={<RutaProtegida />}>
           <Route index element={<AdministrarPacientes />} />
           <Route path='perfil' element={<EditarPerfil />} />
           <Route path='cambiar-password' element={<CambiarPassword />} />
