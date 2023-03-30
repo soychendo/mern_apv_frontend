@@ -6,12 +6,16 @@ import Alerta from "../components/Alerta";
 const EditarPerfil = () => {
 
   const { auth, actualizarPerfil } = useAuth();
-  const [perfil, setPerfil] = useState({})
+  const [perfil, setPerfil] = useState(auth)
   const [alerta, setAlerta] = useState({})
-
-  useEffect(() => {
-    setPerfil(auth)
-  }, [auth])
+  
+  const handleChange = e => {
+    const { value, name } = e.target;
+    setPerfil({
+      ...perfil,
+      [name]: value
+    })
+  }
 
   const handleSubmit = async e => {
     e.preventDefault();
@@ -50,11 +54,9 @@ const EditarPerfil = () => {
                 type='text'
                 className="border bg-gray-50 w-full p-2 mt-5 rounded-lg"
                 name="nombre"
+                key='nombre'
                 value={perfil.nombre || ''}
-                onChange={e => setPerfil({
-                  ...perfil,
-                  [e.target.name]: e.target.value
-                })}
+                onChange={e => handleChange(e)}
               />
             </div>
             <div className="my-3">
@@ -63,11 +65,9 @@ const EditarPerfil = () => {
                 type='text'
                 className="border bg-gray-50 w-full p-2 mt-5 rounded-lg"
                 name="web"
+                key='web'
                 value={perfil.web || ''}
-                onChange={e => setPerfil({
-                  ...perfil,
-                  [e.target.name]: e.target.value
-                })}
+                onChange={e => handleChange(e)}
               />
             </div>
             <div className="my-3">
@@ -76,11 +76,9 @@ const EditarPerfil = () => {
                 type='text'
                 className="border bg-gray-50 w-full p-2 mt-5 rounded-lg"
                 name="telefono"
+                key='telefono'
                 value={perfil.telefono || ''}
-                onChange={e => setPerfil({
-                  ...perfil,
-                  [e.target.name]: e.target.value
-                })}
+                onChange={e => handleChange(e)}
               />
             </div>
             <div className="my-3">
@@ -89,11 +87,9 @@ const EditarPerfil = () => {
                 type='text'
                 className="border bg-gray-50 w-full p-2 mt-5 rounded-lg"
                 name="email"
+                key='email'
                 value={perfil.email || ''}
-                onChange={e => setPerfil({
-                  ...perfil,
-                  [e.target.name]: e.target.value
-                })}
+                onChange={e => handleChange(e)}
               />
             </div>
             <input 
