@@ -56,7 +56,7 @@ const AuthProvider = ({children}) => {
       }
       try {
         const url = `/veterinarios/perfil/${datos._id}`;
-        const { data } = await clienteAxios.put(url, datos, config);
+        await clienteAxios.put(url, datos, config);
         
         return {
           msg: 'Almacenado Correctamente'
@@ -84,7 +84,6 @@ const AuthProvider = ({children}) => {
     try {
       const url = '/veterinarios/actualizar-password';
       const { data } = await clienteAxios.put(url, datos, config)
-      console.log(data)
       return {
         msg: data.msg
       }
@@ -95,7 +94,6 @@ const AuthProvider = ({children}) => {
       }
     }
   }
-
 
   const value = {
     auth, 

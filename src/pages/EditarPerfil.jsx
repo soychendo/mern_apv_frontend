@@ -6,9 +6,9 @@ import Alerta from "../components/Alerta";
 const EditarPerfil = () => {
 
   const { auth, actualizarPerfil } = useAuth();
-  const [perfil, setPerfil] = useState(auth)
+  const [perfil, setPerfil] = useState({})
   const [alerta, setAlerta] = useState({})
-  
+
   const handleChange = e => {
     const { value, name } = e.target;
     setPerfil({
@@ -16,6 +16,9 @@ const EditarPerfil = () => {
       [name]: value
     })
   }
+  useEffect(() => {
+    setPerfil(auth)
+  }, [auth])
 
   const handleSubmit = async e => {
     e.preventDefault();
@@ -54,7 +57,6 @@ const EditarPerfil = () => {
                 type='text'
                 className="border bg-gray-50 w-full p-2 mt-5 rounded-lg"
                 name="nombre"
-                key='nombre'
                 value={perfil.nombre || ''}
                 onChange={e => handleChange(e)}
               />
@@ -65,7 +67,6 @@ const EditarPerfil = () => {
                 type='text'
                 className="border bg-gray-50 w-full p-2 mt-5 rounded-lg"
                 name="web"
-                key='web'
                 value={perfil.web || ''}
                 onChange={e => handleChange(e)}
               />
@@ -76,7 +77,6 @@ const EditarPerfil = () => {
                 type='text'
                 className="border bg-gray-50 w-full p-2 mt-5 rounded-lg"
                 name="telefono"
-                key='telefono'
                 value={perfil.telefono || ''}
                 onChange={e => handleChange(e)}
               />
